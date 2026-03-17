@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
 {
-    [SerializeField] bool canOpen = true;
-    [SerializeField] GameObject textOnScreen;
+    [SerializeField] bool canOpen;
     [SerializeField] AudioSource metalDoorCreak;
     [SerializeField] GameObject theDoor;
 
@@ -45,10 +44,9 @@ public class OpenDoor : MonoBehaviour
 
     IEnumerator OpeningDoor()
     {
-        textOnScreen.SetActive(true);
         metalDoorCreak.Play();
         theDoor.GetComponent<Animator>().Play("MetalDoorOpen");
+        this.gameObject.GetComponent<BoxCollider>().enabled=false;
         yield return new WaitForSeconds(2);
-        textOnScreen.SetActive(false);
     }
 }

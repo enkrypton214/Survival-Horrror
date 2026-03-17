@@ -6,7 +6,6 @@ public class CandlePickUp : MonoBehaviour
 {
 
     [SerializeField] bool canPickUp;
-    [SerializeField] GameObject textOnScreen;
     [SerializeField] GameObject tableCandle;
     [SerializeField] GameObject handCandle;
     [SerializeField] GameObject webEventTrigger;
