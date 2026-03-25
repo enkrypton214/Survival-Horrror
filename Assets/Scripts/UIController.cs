@@ -10,6 +10,11 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject commandBox;
     [SerializeField] GameObject interactCross;
 
+    void Start()
+{
+    Cursor.visible = false;
+    Cursor.lockState = CursorLockMode.Locked;
+}
     void Update()
     {
         if (UIActive == true)

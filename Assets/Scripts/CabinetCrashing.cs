@@ -9,7 +9,8 @@ public class CabinetCrashing : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         crashSound.Play();
-        theCabinet.GetComponent<Animator>().Play("CabinetCrashing");
+        if(theCabinet!=null){
+        theCabinet.GetComponent<Animator>().Play("CabinetCrashing");}
         this.GetComponent<BoxCollider>().enabled=false;
     }
 }

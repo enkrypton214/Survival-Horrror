@@ -8,6 +8,7 @@ public class WebBurn : MonoBehaviour
     [SerializeField] bool canBurn;
     [SerializeField] GameObject textOnScreen;
     [SerializeField] GameObject thePlayer;
+    [SerializeField] GameObject playerCandle;
     [SerializeField] GameObject webCam;
     [SerializeField] GameObject fadeIn;
     [SerializeField] GameObject flameObject;
@@ -20,6 +21,7 @@ public class WebBurn : MonoBehaviour
             {
                 this.GetComponent<BoxCollider>().enabled = false;
                 StartCoroutine(BurnWeb());
+                playerCandle.SetActive(false);
             }
         }
     }

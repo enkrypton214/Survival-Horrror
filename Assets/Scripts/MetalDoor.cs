@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MetalDoor : MonoBehaviour
 {
@@ -9,13 +10,21 @@ public class MetalDoor : MonoBehaviour
     [SerializeField] GameObject theCam;
     [SerializeField] GameObject textOnScreen;
     [SerializeField] AudioSource lockedDoor;
+    [SerializeField] KeyPickup keyPickup;
+    [SerializeField] GameObject ScreenFade;
+
     void Update()
     {
         if (canOpen==true)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && keyPickup.KeyPresent==false)
             {
                 StartCoroutine(OpeningDoor());
+            }
+            if( keyPickup.KeyPresent==true && Input.GetKeyDown(KeyCode.E))
+            {
+                ScreenFade.SetActive(true);
+                StartCoroutine(EndGame());
             }
         }
     }
@@ -55,4 +64,11 @@ public class MetalDoor : MonoBehaviour
         thePlayer.SetActive(true);
         theCam.SetActive(false);
     }
+    
+    IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("MainMenu");
+    }
+
 }
